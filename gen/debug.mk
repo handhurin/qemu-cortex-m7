@@ -43,14 +43,8 @@ ERASE_CMDS += -c 'shutdown'
 
 .PHONY += debug gdb upload flash-erase
 
-debug :
-	$(OCD) -f $(OCD_DBG) -f $(OCD_CHIP) -c init $(DBG_CMDS)
-
 gdb:
-	$(GDB) --eval-command="target remote localhost:3333" $(TARGET)
+	$(GDB) --eval-command="target remote:1234" $(TARGET)
 
 upload :
-	$(OCD) -f $(OCD_DBG) -f $(OCD_CHIP) -c init $(UPLOAD_CMDS)
-
-flash-erase :
-	$(OCD) -f $(OCD_DBG) -f $(OCD_CHIP) -c init $(ERASE_CMDS)
+	$(EMU) -machine mps2-an500 -cpu cortex-m7 -m 16M -kernel $(TARGET) -nographic -serial mon:stdio -S -s 

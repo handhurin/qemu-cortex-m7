@@ -12,9 +12,8 @@ CC      = $(shell which arm-none-eabi-gcc)
 AR      = $(shell which arm-none-eabi-ar)
 SIZE    = $(shell which arm-none-eabi-size)
 READELF = $(shell which arm-none-eabi-readelf)
-GDB     = $(shell which gdb-multiarch || which gdb)
-OCD     = $(shell which openocd)
-CHECKER = $(shell which cppcheck)
+GDB     = $(shell which arm-none-eabi-gdb)
+EMU		= $(shell which qemu-system-arm)
 
 ##############################################
 ############### MEMORY SETTINGS ##############
