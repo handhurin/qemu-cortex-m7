@@ -12,8 +12,6 @@
 #include <stdio.h>
 
 #include "main.h"
-#include "initialisation.h"
-#include "io_instances.h"
 
 /***************************** Macros Definitions ****************************/
 

@@ -1,118 +1,28 @@
 # Makefile with board parameters
 
 #################################
-############# ART_PI ############
+########### MPS2_AN500 ##########
 #################################
-ifeq ($(BOARD), ART_PI)
+ifeq ($(BOARD), MPS2_AN500)
 # Chip Information
-CHIP_VENDOR = ST
-CHIP_FAMILLY = STM32H7xx
-CHIP = STM32H750xx
+CHIP_VENDOR = ARM
+CHIP_FAMILLY = CMSDK_CM7
+CHIP = CMSDK_CM7
 MACH = cortex-m7
 CORE_SELECT = -DCORE_CM7
-FPU_TYPE = -mfpu=fpv5-d16 -mfloat-abi=hard
-FPU_AVAILABILITY = FPU_AVAILABLE
-CACHE_AVAILABILITY = CACHE_AVAILABLE
-ECC_AVAILABILITY = ECC_UNAVAILABLE
-# Debugger Information
-OCD_DBG = interface/stlink.cfg
-OCD_CHIP = target/stm32h7x.cfg
-# HAL & BSP Information
-HAL_SRCS_LIST = $(CONF_HALS_DIR)/stm32h7xx_hal_conf.mk
-BSP_DIR = $(BSPs_DIR)/ART-PI-BSP
-LINKER_SCRIPT = $(BSP_DIR)/stm32h750xb_$(LOAD_MEMORY).ld
-
-#################################
-######### NUCLEO_H745ZI #########
-#################################
-else ifeq ($(BOARD), NUCLEO_H745ZI)
-# Chip Information
-CHIP_VENDOR = ST
-CHIP_FAMILLY = STM32H7xx
-CHIP = STM32H745xx
-MACH = cortex-m7
-CORE_SELECT = -DCORE_CM7
-FPU_TYPE = -mfpu=fpv5-d16 -mfloat-abi=hard
-FPU_AVAILABILITY = FPU_AVAILABLE
-CACHE_AVAILABILITY = CACHE_AVAILABLE
-ECC_AVAILABILITY = ECC_UNAVAILABLE
-# Debugger Information
-OCD_DBG = interface/stlink.cfg
-OCD_CHIP = target/stm32h7x.cfg
-# HAL & BSP Information
-HAL_SRCS_LIST = $(CONF_HALS_DIR)/stm32h7xx_hal_conf.mk
-BSP_DIR = $(BSPs_DIR)/NUCLEO-H745ZI-BSP
-LINKER_SCRIPT = $(BSP_DIR)/stm32h745zi_$(LOAD_MEMORY).ld
-
-#################################
-######### NUCLEO_F411RE #########
-#################################
-else ifeq ($(BOARD), NUCLEO_F411RE)
-# Chip Information
-CHIP_VENDOR = ST
-CHIP_FAMILLY = STM32F4xx
-CHIP = STM32F411xE
-MACH = cortex-m4
-CORE_SELECT =
-FPU_TYPE = -mfpu=fpv4-sp-d16 -mfloat-abi=hard
-FPU_AVAILABILITY = FPU_AVAILABLE
-CACHE_AVAILABILITY = CACHE_UNAVAILABLE
-ECC_AVAILABILITY = ECC_UNAVAILABLE
-# Debugger Information
-OCD_DBG = interface/stlink.cfg
-OCD_CHIP = target/stm32f4x.cfg
-# HAL & BSP Information
-HAL_SRCS_LIST = $(CONF_HALS_DIR)/stm32f4xx_hal_conf.mk
-BSP_DIR = $(BSPs_DIR)/NUCLEO-F411RE-BSP
-LINKER_SCRIPT = $(BSP_DIR)/stm32f411re_$(LOAD_MEMORY).ld
-
-#################################
-######## DISCOVERY_F407VG #######
-#################################
-else ifeq ($(BOARD), DISCOVERY_F407VG)
-# Chip Information
-CHIP_VENDOR = ST
-CHIP_FAMILLY = STM32F4xx
-CHIP = STM32F407xx
-MACH = cortex-m4
-CORE_SELECT =
-FPU_TYPE = -mfpu=fpv4-sp-d16 -mfloat-abi=hard
-FPU_AVAILABILITY = FPU_AVAILABLE
-CACHE_AVAILABILITY = CACHE_UNAVAILABLE
-ECC_AVAILABILITY = ECC_UNAVAILABLE
-# Debugger Information
-OCD_DBG = interface/stlink.cfg
-OCD_CHIP = target/stm32f4x.cfg
-# HAL & BSP Information
-HAL_SRCS_LIST = $(CONF_HALS_DIR)/stm32f4xx_hal_conf.mk
-BSP_DIR = $(BSPs_DIR)/DISCOVERY-F407VG-BSP
-LINKER_SCRIPT = $(BSP_DIR)/stm32f407vg_$(LOAD_MEMORY).ld
-
-#################################
-######### NUCLEO_F103RB #########
-#################################
-else ifeq ($(BOARD), NUCLEO_F103RB)
-# Chip Information
-CHIP_VENDOR = ST
-CHIP_FAMILLY = STM32F1xx
-CHIP = STM32F103xB
-MACH = cortex-m3
-CORE_SELECT =
 FPU_TYPE = -mfloat-abi=soft
 FPU_AVAILABILITY = FPU_UNAVAILABLE
-CACHE_AVAILABILITY = CACHE_UNAVAILABLE
-ECC_AVAILABILITY = ECC_UNAVAILABLE
+CACHE_AVAILABILITY = CACHE_AVAILABLE
 # Debugger Information
 OCD_DBG = interface/stlink.cfg
-OCD_CHIP = target/stm32f1x.cfg
-# HAL & BSP Information
-HAL_SRCS_LIST = $(CONF_HALS_DIR)/stm32f1xx_hal_conf.mk
-BSP_DIR = $(BSPs_DIR)/NUCLEO-F103RB-BSP
-LINKER_SCRIPT = $(BSP_DIR)/stm32f103rb_$(LOAD_MEMORY).ld
+OCD_CHIP = target/stm32h7x.cfg
+# BSP Information
+BSP_DIR = $(BSPs_DIR)/MPS2_AN500-BSP
+LINKER_SCRIPT = $(BSP_DIR)/mps2_an500.ld
 
 #################################
 ############## ELSE #############
 #################################
 else
-$(error This board is not available for the flight software)
+$(error This board is not available for the software)
 endif

@@ -8,7 +8,7 @@ WORKSPACE 				= $(shell pwd)
 
 CORE_DIR        		= $(WORKSPACE)/core
 
-TOOLS_DIR 				= $(WORKSPACE)/../tools
+TOOLS_DIR 				= $(WORKSPACE)/tools
 CMSIS_DIR 				= $(TOOLS_DIR)/CMSIS
 HALs_DIR  				= $(TOOLS_DIR)/HALs
 BSPs_DIR  				= $(TOOLS_DIR)/BSPs
@@ -38,12 +38,8 @@ CORE_SRCDIR = $(CORE_DIR)/src
 ##############################################
 
 # CMSIS Directories
-ifeq ($(CHIP_FAMILLY), STM32F4xx)
-CMSIS_INCDIR_DEVICE = $(CMSIS_DIR)/cmsis_device_stm32f4/Include
-else ifeq ($(CHIP_FAMILLY), STM32F1xx)
-CMSIS_INCDIR_DEVICE = $(CMSIS_DIR)/cmsis_device_stm32f1/Include
-else ifeq ($(CHIP_FAMILLY), STM32H7xx)
-CMSIS_INCDIR_DEVICE = $(CMSIS_DIR)/cmsis_device_stm32h7/Include
+ifeq ($(CHIP_FAMILLY), CMSDK_CM7)
+CMSIS_INCDIR_DEVICE = $(CMSIS_DIR)/cmsis_device_cmsdk_cm7/Include
 else
 $(error There is no compatible CMSIS)
 endif
@@ -52,20 +48,6 @@ CMSIS_INCDIR       = $(CMSIS_DIR)/CMSIS-ARM/CMSIS/Core/Include
 ##############################################
 ############### HAL DIRECTORIES ##############
 ##############################################
-
-# HAL Directories
-ifeq ($(CHIP_FAMILLY), STM32F4xx)
-HAL_DIR = $(HALs_DIR)/HAL-STM32F4
-else ifeq ($(CHIP_FAMILLY), STM32F1xx)
-HAL_DIR = $(HALs_DIR)/HAL-STM32F1
-else ifeq ($(CHIP_FAMILLY), STM32H7xx)
-HAL_DIR = $(HALs_DIR)/HAL-STM32H7
-else
-$(error There is no compatible HAL)
-endif
-HAL_INCDIR = $(HAL_DIR)/Inc
-HAL_SRCDIR = $(HAL_DIR)/Src
-HAL_OBJDIR = $(BUILD_TOOLS_DIR)/hal
 
 ##############################################
 ########### GENERIC HAL DIRECTORIES ##########
