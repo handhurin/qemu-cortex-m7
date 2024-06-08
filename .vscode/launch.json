@@ -1,0 +1,19 @@
+{
+    // Utilisez IntelliSense pour en savoir plus sur les attributs possibles.
+    // Pointez pour afficher la description des attributs existants.
+    // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [        
+        {
+            "name": "Attach QEMU",
+            "cwd": "${workspaceRoot}",
+            "executable": "./build/target/qemu-cortex-m7-debug.elf",
+            "request": "attach",
+            "stopAtConnect": true,
+            "type": "gdb",
+            "target": ":1234",
+            "remote": true,
+        },
+        
+    ]
+}

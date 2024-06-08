@@ -19,10 +19,10 @@
 /***************************** Types Definitions *****************************/
 
 /** @brief UART handle struct type redefinition */
-typedef uint32_t uartHandleStruct_t; // To do
+typedef uint32_t uartHandleStruct_t; // Unused for this driver
 
 /** @brief UART reference type redefinition (USART1, USART2, ...) */
-typedef uint32_t uartRef_t; // To do
+typedef CMSDK_UART_TypeDef uartRef_t;
 
 /** @brief UART baud rate type definition */
 typedef uint32_t uartBaudRate_t;
@@ -58,7 +58,7 @@ typedef enum
 } uartIoCtlAction_t;
 
 /** 
- * @struct uartInst_t
+ * @struct  uartInst_t
  * @brief   Struct type definition of a UART instance
  */
 typedef struct
