@@ -12,7 +12,9 @@
 #include <stdio.h>
 
 #include "main.h"
-#include "uart.h"
+#include "hal_init.h"
+#include "hal_uart.h"
+#include "hal_timer.h"
 
 /***************************** Macros Definitions ****************************/
 
@@ -37,6 +39,7 @@ uartInst_t g_uart_inst =
 int main(void)
 {
     // Initialisation
+    InitHal();
     UartOpen(&g_uart_inst);
 
     // Function Core
@@ -45,8 +48,8 @@ int main(void)
         // Print Hello
         UartWrite(&g_uart_inst, (uartMsg_t *)"Hello !\n", sizeof("Hello !\n"));
         
-        // Delay
-        for(int i=0u; i < 100000000;i++);
+        // 1s delay
+        HalDelay(1000);
     }
 
     return 0;

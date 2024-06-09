@@ -12,7 +12,7 @@
 
 /******************************* Include Files *******************************/
 
-#include "hal_cmsdk_types.h"
+#include "cmsdk_hal_types.h"
 
 /***************************** Macros Definitions ****************************/
 
@@ -44,9 +44,9 @@ typedef struct
 
 /*************************** Functions Declarations **************************/
 
-HAL_StatusTypeDef timer_cmsdk_init(TIM_HandleTypeDef *tim);
-HAL_StatusTypeDef timer_cmsdk_start(TIM_HandleTypeDef *tim);
-HAL_StatusTypeDef timer_cmsdk_stop(TIM_HandleTypeDef *tim);
-HAL_StatusTypeDef timer_cmsdk_irqhandler(TIM_HandleTypeDef *tim);
+HAL_StatusTypeDef cmsdk_TimerInit(TIM_HandleTypeDef *tim);
+HAL_StatusTypeDef cmsdk_TimerStart(TIM_HandleTypeDef *tim);
+HAL_StatusTypeDef cmsdk_Timerstop(TIM_HandleTypeDef *tim);
+HAL_StatusTypeDef cmsdk_TimerIrqHandler(TIM_HandleTypeDef *tim);
 
 #endif /* CMSDK_TIMER_H */

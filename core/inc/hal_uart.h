@@ -1,5 +1,5 @@
 /**
- * @file    uart.h
+ * @file    hal_uart.h
  * @author  Merlin Kooshmanian
  * @brief   Header file for UART functions
  * @date    04/06/2024
@@ -7,8 +7,8 @@
  * @copyright Copyright (c) Merlin Kooshmanian 2024
  */
 
-#ifndef UART_H
-#define UART_H
+#ifndef HAL_UART_H
+#define HAL_UART_H
 
 /******************************* Include Files *******************************/
 
@@ -79,4 +79,4 @@ extern halStatus_t UartRead(uartInst_t *uart_inst, uartMsg_t *msg, uartMsgLength
 extern halStatus_t UartIoctl(uartInst_t *uart_inst, halIoCtlCmd_t io_cmd);
 extern halStatus_t UartClose(uartInst_t *uart_inst);
 
-#endif /* UART_H */
+#endif /* HAL_UART_H */

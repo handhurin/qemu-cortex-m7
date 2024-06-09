@@ -12,7 +12,7 @@
 
 /******************************* Include Files *******************************/
 
-#include "hal_cmsdk_types.h"
+#include "cmsdk_hal_types.h"
 
 /***************************** Macros Definitions ****************************/
 
@@ -33,8 +33,8 @@ typedef struct
 
 /*************************** Functions Declarations **************************/
 
-HAL_StatusTypeDef uart_cmsdk_init(UART_HandleTypeDef *uart);
-HAL_StatusTypeDef uart_cmsdk_rx_char(UART_HandleTypeDef *uart, unsigned char *c);
-HAL_StatusTypeDef uart_cmsdk_tx_char(UART_HandleTypeDef *uart, unsigned char c);
+HAL_StatusTypeDef cmsdk_UartInit(UART_HandleTypeDef *uart);
+HAL_StatusTypeDef cmsdk_UartRxChar(UART_HandleTypeDef *uart, unsigned char *c);
+HAL_StatusTypeDef cmsdk_UartTxChar(UART_HandleTypeDef *uart, unsigned char c);
 
 #endif /* CMSDK_UART_H */

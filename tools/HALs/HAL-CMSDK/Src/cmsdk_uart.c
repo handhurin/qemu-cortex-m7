@@ -1,5 +1,5 @@
 /**
- * @file    uart_cmsdk.c
+ * @file    cmsdk_uart.c
  * @author  Merlin Kooshmanian
  * @brief   Source file for UART CMSDK functions
  * @date    09/06/2024
@@ -9,7 +9,7 @@
 
 /******************************* Include Files *******************************/
 
-#include "uart_cmsdk.h"
+#include "cmsdk_uart.h"
 
 /***************************** Macros Definitions ****************************/
 
@@ -24,7 +24,7 @@ extern uint32_t SystemCoreClock;
 /**
  * @brief Initialize UART channel
  */
-HAL_StatusTypeDef uart_cmsdk_init(UART_HandleTypeDef *uart)
+HAL_StatusTypeDef cmsdk_UartInit(UART_HandleTypeDef *uart)
 {
 	/* Set baud rate */
 	if (uart->baud_rate != 0u)
@@ -41,7 +41,7 @@ HAL_StatusTypeDef uart_cmsdk_init(UART_HandleTypeDef *uart)
 /**
  * @brief Poll the device for receiving a char.
  */
-HAL_StatusTypeDef uart_cmsdk_rx_char(UART_HandleTypeDef *uart, unsigned char *c)
+HAL_StatusTypeDef cmsdk_UartRxChar(UART_HandleTypeDef *uart, unsigned char *c)
 {
 	/* If the receiver is not ready returns HAL_BUSY */
 	if (!(uart->instance->STATE & CMSDK_UART_STATE_RXBF_Msk)) 
@@ -58,7 +58,7 @@ HAL_StatusTypeDef uart_cmsdk_rx_char(UART_HandleTypeDef *uart, unsigned char *c)
 /**
  * @brief Poll the device for transmitting a char.
  */
-HAL_StatusTypeDef uart_cmsdk_tx_char(UART_HandleTypeDef *uart, unsigned char c)
+HAL_StatusTypeDef cmsdk_UartTxChar(UART_HandleTypeDef *uart, unsigned char c)
 {
 	/* Wait for transmitter to be ready */
 	while (uart->instance->STATE & CMSDK_UART_STATE_TXBF_Msk);

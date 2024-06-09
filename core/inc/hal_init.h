@@ -1,14 +1,14 @@
 /**
- * @file    timer.h
+ * @file    hal_init.h
  * @author  Merlin Kooshmanian
- * @brief   Header file for TIMER functions
- * @date    04/06/2024
+ * @brief   Header file for HAL Initialisation functions
+ * @date    29/04/2023
  *
  * @copyright Copyright (c) Merlin Kooshmanian 2024
  */
 
-#ifndef TIMER_H
-#define TIMER_H
+#ifndef HAL_INIT_H
+#define HAL_INIT_H
 
 /******************************* Include Files *******************************/
 
@@ -22,8 +22,6 @@
 
 /*************************** Functions Declarations **************************/
 
-extern halStatus_t InitHalTimer(void);
-extern void HalDelay(uint32_t delay);
-extern uint32_t HalGetTick(void);
+extern halStatus_t InitHal(void);
 
-#endif /* TIMER_H */
+#endif /* HAL_INIT_H */

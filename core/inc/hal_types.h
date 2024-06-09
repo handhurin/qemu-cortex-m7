@@ -15,7 +15,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "hal_cmsdk.h"
+#include "cmsdk_hal.h"
 
 /***************************** Types Definitions *****************************/
 
