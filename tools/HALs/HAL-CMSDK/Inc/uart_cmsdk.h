@@ -2,9 +2,9 @@
  * @file    cmsdk_uart.h
  * @author  Merlin Kooshmanian
  * @brief   Header file for CMSDK UART functions
- * @date    04/06/2024
+ * @date    09/06/2024
  * 
- * Largely inspired by the Zephyr driver.
+ * Largely inspired by the Zephyr driver and STM32 HAL style.
  */
 
 #ifndef CMSDK_UART_H
@@ -12,23 +12,11 @@
 
 /******************************* Include Files *******************************/
 
-#include <stdint.h>
-#include <stddef.h>
-
-#include "CMSDK_CM7.h"
+#include "hal_cmsdk_types.h"
 
 /***************************** Macros Definitions ****************************/
 
 /***************************** Types Definitions *****************************/
-
-/**
- * @brief  HAL Lock structures definition
- */
-typedef enum
-{
-  HAL_UNLOCKED = 0x00,
-  HAL_LOCKED   = 0x01
-} HAL_LockTypeDef;
 
 /** 
  * @struct  UART_HandleTypeDef
@@ -46,8 +34,8 @@ typedef struct
 
 /*************************** Functions Declarations **************************/
 
-int uart_cmsdk_init(UART_HandleTypeDef *uart);
-int uart_cmsdk_rx_char(UART_HandleTypeDef *uart, unsigned char *c);
-int uart_cmsdk_tx_char(UART_HandleTypeDef *uart, unsigned char c);
+HAL_StatusTypeDef uart_cmsdk_init(UART_HandleTypeDef *uart);
+HAL_StatusTypeDef uart_cmsdk_rx_char(UART_HandleTypeDef *uart, unsigned char *c);
+HAL_StatusTypeDef uart_cmsdk_tx_char(UART_HandleTypeDef *uart, unsigned char c);
 
 #endif /* CMSDK_UART_H */
