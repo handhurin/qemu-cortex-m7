@@ -40,6 +40,9 @@ int main(void)
     UartOpen(&g_uart_inst);
 
     // Function Core
+
+    UartWrite(&g_uart_inst, (uartMsg_t *)"Hello World !\n", sizeof("Hello World !\n"));
+
     while (1)
     {
         // Do Nothing

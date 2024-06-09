@@ -8,6 +8,7 @@
             "name": "Attach QEMU",
             "cwd": "${workspaceRoot}",
             "executable": "./build/target/qemu-cortex-m7-debug.elf",
+            "preLaunchTask": "Start QEMU",
             "request": "attach",
             "stopAtConnect": true,
             "type": "gdb",

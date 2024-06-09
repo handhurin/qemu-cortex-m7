@@ -34,7 +34,9 @@ halStatus_t UartOpen(uartInst_t *uart_inst)
     // Function Core
     if ((uart_inst != NULL) && (uart_inst->baudrate != 0u))
     {
-        (void)(uart_inst);
+        uart_inst->handle_struct.instance = uart_inst->uart_ref;
+        uart_inst->handle_struct.baud_rate = uart_inst->baudrate;
+        uart_cmsdk_init(&uart_inst->handle_struct);
     }
     else
     {
@@ -66,9 +68,13 @@ halStatus_t UartWrite(uartInst_t *uart_inst, uartMsg_t *msg, uartMsgLength_t len
     // Function Core
     if ((uart_inst != NULL) && (msg != NULL) && (length != 0u))
     {
-        (void)(uart_inst);
-        (void)(msg);
-        (void)(length);
+        uint32_t status = 0u;
+        uint32_t i = 0u;
+        while ((status == 0u) && (i < length))
+        {
+            status = uart_cmsdk_tx_char(&uart_inst->handle_struct, msg[i]);
+            i++;
+        }
     }
     else
     {
@@ -100,9 +106,13 @@ halStatus_t UartRead(uartInst_t *uart_inst, uartMsg_t *msg, uartMsgLength_t leng
     // Function Core
     if ((uart_inst != NULL) && (msg != NULL) && (length != 0u))
     {
-        (void)(uart_inst);
-        (void)(msg);
-        (void)(length);
+        uint32_t status = 0u;
+        uint32_t i = 0u;
+        while ((status == 0u) && (i < length))
+        {
+            status = uart_cmsdk_rx_char(&uart_inst->handle_struct, &msg[i]);
+            i++;
+        }
     }
     else
     {

@@ -13,13 +13,14 @@
 /******************************* Include Files *******************************/
 
 #include "hal_types.h"
+#include "uart_cmsdk.h"
 
 /***************************** Macros Definitions ****************************/
 
 /***************************** Types Definitions *****************************/
 
 /** @brief UART handle struct type redefinition */
-typedef uint32_t uartHandleStruct_t; // Unused for this driver
+typedef UART_HandleTypeDef uartHandleStruct_t; // Unused for this driver
 
 /** @brief UART reference type redefinition (USART1, USART2, ...) */
 typedef CMSDK_UART_TypeDef uartRef_t;

@@ -15,8 +15,6 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "CMSDK_CM7.h"
-
 /***************************** Types Definitions *****************************/
 
 /** 

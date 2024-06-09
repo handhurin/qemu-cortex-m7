@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Program",
+            "command": "make",
+            "args": ["build"],
+            "type": "shell"
+        },
+        {
+            "label": "Start QEMU",
+            "command": "make",
+            "args": ["debug"],
+            "isBackground": true,
+            "type": "shell",
+            "problemMatcher": {
+                "owner": "custom",
+                "fileLocation": ["relative", "${workspaceFolder}"],
+                "pattern": [
+                    {
+                        "regexp": ".",
+                        "file": 1,
+                        "location": 2,
+                        "message": 3
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".",
+                    "endsPattern": "."
+                },
+            },
+        },
+    ]
+}

@@ -43,8 +43,11 @@ ERASE_CMDS += -c 'shutdown'
 
 .PHONY += debug gdb upload flash-erase
 
+debug :
+	$(EMU) -machine mps2-an500 -cpu cortex-m7 -m 16M -kernel $(TARGET) -nographic -serial mon:stdio -S -s
+
 gdb:
 	$(GDB) --eval-command="target remote:1234" $(TARGET)
 
 upload :
-	$(EMU) -machine mps2-an500 -cpu cortex-m7 -m 16M -kernel $(TARGET) -nographic -serial mon:stdio -S -s 
+	$(EMU) -machine mps2-an500 -cpu cortex-m7 -m 16M -kernel $(TARGET) -nographic -serial mon:stdio

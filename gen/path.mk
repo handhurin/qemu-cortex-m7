@@ -38,7 +38,7 @@ CORE_SRCDIR = $(CORE_DIR)/src
 ##############################################
 
 # CMSIS Directories
-ifeq ($(CHIP_FAMILLY), CMSDK_CM7)
+ifeq ($(CHIP_FAMILLY), CMSDK)
 CMSIS_INCDIR_DEVICE = $(CMSIS_DIR)/cmsis_device_cmsdk_cm7/Include
 else
 $(error There is no compatible CMSIS)
@@ -48,6 +48,16 @@ CMSIS_INCDIR       = $(CMSIS_DIR)/CMSIS-ARM/CMSIS/Core/Include
 ##############################################
 ############### HAL DIRECTORIES ##############
 ##############################################
+
+# HAL Directories
+ifeq ($(CHIP_FAMILLY), CMSDK)
+HAL_DIR = $(HALs_DIR)/HAL-CMSDK
+else
+$(error There is no compatible HAL)
+endif
+HAL_INCDIR = $(HAL_DIR)/Inc
+HAL_SRCDIR = $(HAL_DIR)/Src
+HAL_OBJDIR = $(BUILD_TOOLS_DIR)/hal
 
 ##############################################
 ########### GENERIC HAL DIRECTORIES ##########

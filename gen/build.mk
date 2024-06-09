@@ -2,6 +2,7 @@
 
 include gen/build_core.mk
 include gen/build_bsp.mk
+include gen/build_hal.mk
 
 ##############################################
 #################### BUILD ###################
@@ -27,9 +28,9 @@ endif
 build : $(TARGET)
 
 # Target Linking Stage
-$(TARGET) : bsp core
+$(TARGET) : bsp hal core
 	mkdir -p $(@D)
-	$(CC) ${CORE_OBJS} ${BSP_OBJS} -L$(BUILD_LIBS_DIR) $(PROJECT_LDFLAGS) -o $@ > $(TARGET:.elf=.size)
+	$(CC) ${CORE_OBJS} ${BSP_OBJS} -L$(BUILD_LIBS_DIR) -lhal-$(VERSION) $(PROJECT_LDFLAGS) -o $@ > $(TARGET:.elf=.size)
 	$(READELF) -a $(TARGET) > $(TARGET:.elf=.readelf)
 	@echo "*****************************"
 	@echo "***   Target Build Done   ***"
