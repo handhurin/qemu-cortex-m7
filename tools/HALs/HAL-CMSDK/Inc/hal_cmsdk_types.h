@@ -21,19 +21,19 @@
  */
 typedef enum
 {
-  HAL_UNLOCKED = 0x00,
-  HAL_LOCKED   = 0x01
+    HAL_UNLOCKED = 0u,
+    HAL_LOCKED = 1u,
 } HAL_LockTypeDef;
 
 /**
-  * @brief  HAL Status structures definition
-  */
+ * @brief  HAL Status structures definition
+ */
 typedef enum
 {
-  HAL_OK       = 0x00,
-  HAL_ERROR    = 0x01,
-  HAL_BUSY     = 0x02,
-  HAL_TIMEOUT  = 0x03
+    HAL_OK = 0u,
+    HAL_ERROR = 1u,
+    HAL_BUSY = 2u,
+    HAL_TIMEOUT = 3u,
 } HAL_StatusTypeDef;
 
 #endif /* HAL_CMSDK_TYPES_H */

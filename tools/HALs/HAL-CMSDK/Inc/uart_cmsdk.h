@@ -25,9 +25,8 @@
 typedef struct
 {
     CMSDK_UART_TypeDef *instance;
-    uint32_t baud_rate; 
     HAL_LockTypeDef lock;
-    uint32_t error_code; 
+    uint32_t baud_rate;
 } UART_HandleTypeDef;
 
 /*************************** Variables Declarations **************************/
