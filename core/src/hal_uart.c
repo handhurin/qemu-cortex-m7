@@ -10,6 +10,7 @@
 /******************************* Include Files *******************************/
 
 #include "hal_uart.h"
+#include "hal_timer.h"
 
 /***************************** Macros Definitions ****************************/
 
@@ -68,12 +69,11 @@ halStatus_t UartWrite(uartInst_t *uart_inst, uartMsg_t *msg, uartMsgLength_t len
     // Function Core
     if ((uart_inst != NULL) && (msg != NULL) && (length != 0u))
     {
-        uint32_t status = 0u;
-        uint32_t i = 0u;
-        while ((status == 0u) && (i < length))
+        HAL_StatusTypeDef status = HAL_OK;
+        status = cmsdk_UartTx(&uart_inst->handle_struct, msg, length, GENERIC_HAL_MAX_DELAY);
+        if (status != HAL_OK)
         {
-            status = cmsdk_UartTxChar(&uart_inst->handle_struct, msg[i]);
-            i++;
+            return_value = GEN_HAL_ERROR;
         }
     }
     else
@@ -106,12 +106,11 @@ halStatus_t UartRead(uartInst_t *uart_inst, uartMsg_t *msg, uartMsgLength_t leng
     // Function Core
     if ((uart_inst != NULL) && (msg != NULL) && (length != 0u))
     {
-        uint32_t status = 0u;
-        uint32_t i = 0u;
-        while ((status == 0u) && (i < length))
+        HAL_StatusTypeDef status = HAL_OK;
+        status = cmsdk_UartRx(&uart_inst->handle_struct, msg, length, GENERIC_HAL_MAX_DELAY);
+        if (status != HAL_OK)
         {
-            status = cmsdk_UartRxChar(&uart_inst->handle_struct, &msg[i]);
-            i++;
+            return_value = GEN_HAL_ERROR;
         }
     }
     else

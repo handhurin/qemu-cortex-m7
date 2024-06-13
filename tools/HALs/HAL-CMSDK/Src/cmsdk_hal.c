@@ -29,6 +29,9 @@ static TIM_HandleTypeDef hal_timer_inst = {0};
 
 /*************************** Functions Definitions ***************************/
 
+/**
+ * @brief   Init HAL
+ */
 HAL_StatusTypeDef cmsdk_InitHal(void)
 {
     // Setup the timer information
@@ -50,10 +53,7 @@ HAL_StatusTypeDef cmsdk_InitHal(void)
 }
 
 /**
- * @fn          cmsdk_HalDelay(uint32_t delay)
- * @brief       This function does using active wait using the HAL main timer tick. 
- * @param[in]   delay Amount of time in microseconds the wait will lasts.
- * @warning     Do not use this function inside a thread, please prefer the OS API
+ * @brief   Create an active delay
  */
 void cmsdk_HalDelay(uint32_t delay)
 {
@@ -65,6 +65,9 @@ void cmsdk_HalDelay(uint32_t delay)
     }
 }
 
+/**
+ * @brief   Get the Hal tick
+ */
 uint32_t cmsdk_HalGetTick(void)
 {
     return tick;

@@ -16,6 +16,8 @@
 
 /***************************** Macros Definitions ****************************/
 
+#define GENERIC_HAL_MAX_DELAY   30u /**< Max delay (in milliseconds) for function that uses HAL timer */
+
 /***************************** Types Definitions *****************************/
 
 /*************************** Variables Declarations **************************/

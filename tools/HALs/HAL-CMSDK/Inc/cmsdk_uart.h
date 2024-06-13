@@ -34,7 +34,7 @@ typedef struct
 /*************************** Functions Declarations **************************/
 
 HAL_StatusTypeDef cmsdk_UartInit(UART_HandleTypeDef *uart);
-HAL_StatusTypeDef cmsdk_UartRxChar(UART_HandleTypeDef *uart, unsigned char *c);
-HAL_StatusTypeDef cmsdk_UartTxChar(UART_HandleTypeDef *uart, unsigned char c);
+HAL_StatusTypeDef cmsdk_UartTx(UART_HandleTypeDef *uart, uint8_t *msg, uint16_t length, uint32_t timeout);
+HAL_StatusTypeDef cmsdk_UartRx(UART_HandleTypeDef *uart, uint8_t *msg, uint16_t length, uint32_t timeout);
 
 #endif /* CMSDK_UART_H */
