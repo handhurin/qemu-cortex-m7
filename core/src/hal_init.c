@@ -31,11 +31,10 @@ halStatus_t InitHal(void)
 {
     // Variable Initialisation
     halStatus_t return_value = GEN_HAL_SUCCESSFUL;
-    HAL_StatusTypeDef test_val;
 
     // Function Core
-    test_val = cmsdk_InitHal();
-    if (test_val != HAL_OK)
+    HAL_StatusTypeDef status = cmsdk_InitHal();
+    if (status != HAL_OK)
     {
         return_value = GEN_HAL_ERROR;
     }

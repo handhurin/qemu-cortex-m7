@@ -37,7 +37,11 @@ halStatus_t UartOpen(uartInst_t *uart_inst)
     {
         uart_inst->handle_struct.instance = uart_inst->uart_ref;
         uart_inst->handle_struct.baud_rate = uart_inst->baudrate;
-        cmsdk_UartInit(&uart_inst->handle_struct);
+        HAL_StatusTypeDef status = cmsdk_UartInit(&uart_inst->handle_struct);
+        if (status != HAL_OK)
+        {
+            return_value = GEN_HAL_ERROR;
+        }
     }
     else
     {
@@ -69,8 +73,7 @@ halStatus_t UartWrite(uartInst_t *uart_inst, uartMsg_t *msg, uartMsgLength_t len
     // Function Core
     if ((uart_inst != NULL) && (msg != NULL) && (length != 0u))
     {
-        HAL_StatusTypeDef status = HAL_OK;
-        status = cmsdk_UartTx(&uart_inst->handle_struct, msg, length, GENERIC_HAL_MAX_DELAY);
+        HAL_StatusTypeDef status = cmsdk_UartTx(&uart_inst->handle_struct, msg, length, GENERIC_HAL_MAX_DELAY);
         if (status != HAL_OK)
         {
             return_value = GEN_HAL_ERROR;
@@ -106,8 +109,7 @@ halStatus_t UartRead(uartInst_t *uart_inst, uartMsg_t *msg, uartMsgLength_t leng
     // Function Core
     if ((uart_inst != NULL) && (msg != NULL) && (length != 0u))
     {
-        HAL_StatusTypeDef status = HAL_OK;
-        status = cmsdk_UartRx(&uart_inst->handle_struct, msg, length, GENERIC_HAL_MAX_DELAY);
+        HAL_StatusTypeDef status = cmsdk_UartRx(&uart_inst->handle_struct, msg, length, GENERIC_HAL_MAX_DELAY);
         if (status != HAL_OK)
         {
             return_value = GEN_HAL_ERROR;

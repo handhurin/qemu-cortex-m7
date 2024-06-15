@@ -10,8 +10,8 @@ CHIP_FAMILLY = CMSDK
 CHIP = CMSDK_CM7
 MACH = cortex-m7
 CORE_SELECT = -DCORE_CM7
-FPU_TYPE = -mfloat-abi=soft
-FPU_AVAILABILITY = FPU_UNAVAILABLE
+FPU_TYPE = -mfpu=fpv5-d16 -mfloat-abi=hard
+FPU_AVAILABILITY = FPU_AVAILABLE
 CACHE_AVAILABILITY = CACHE_AVAILABLE
 # Debugger Information
 OCD_DBG = interface/stlink.cfg
