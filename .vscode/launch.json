@@ -3,18 +3,20 @@
     // Pointez pour afficher la description des attributs existants.
     // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [        
+    "configurations": [
         {
-            "name": "Attach QEMU",
+            "name": "Debug QEMU",
             "cwd": "${workspaceRoot}",
             "executable": "./build/target/qemu-cortex-m7-debug.elf",
-            "preLaunchTask": "Start QEMU",
-            "request": "attach",
-            "stopAtConnect": true,
-            "type": "gdb",
-            "target": ":1234",
-            "remote": true,
+            "preLaunchTask": "Build Program",
+            "request": "launch",
+            "type": "cortex-debug",
+            "gdbPath": "arm-none-eabi-gdb",
+            "servertype": "qemu",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "cpu": "cortex-m7",
+            "machine": "mps2-an500",
         },
-        
     ]
 }
