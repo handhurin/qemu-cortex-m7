@@ -40,6 +40,14 @@ SECTIONS
         __rodata_end__ = .;
     } >DTCM_RAM
 
+    /* Tables provided by the compiler to unwind stack */
+    .ARM : 
+    {
+        __exidx_start = .;
+        *(.ARM.exidx*)
+        __exidx_end = .;
+    } >DTCM_RAM
+
     /* Used by the startup to initialize data */
     __data_start_initialize__ = LOADADDR(.data);
 

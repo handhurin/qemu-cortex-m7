@@ -21,6 +21,7 @@ PROJECT_CFLAGS += -Wextra # Enable extra compiler warnings
 PROJECT_CFLAGS += -pedantic # Compiler generates warnings if your code uses any language feature that conflicts with strict ISO C or ISO C++
 PROJECT_CFLAGS += $(FPU_TYPE) # Which fpu is used (if any)
 PROJECT_CFLAGS += -mthumb # Generate 16-bit instructions to optimise the process
+PROJECT_CFLAGS += -funwind-tables # Adds tables for unwinding the stack
 PROJECT_CFLAGS += --specs=nosys.specs # Indicates absence of system, as a result system calls are disabled
 PROJECT_CFLAGS += --specs=nano.specs # Uses libraries related to newlib-nano which is specialised for embedded systems
 PROJECT_CFLAGS += $(PROJECT_DEFINES)
