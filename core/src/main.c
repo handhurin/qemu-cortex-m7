@@ -39,7 +39,15 @@ uartInst_t g_uart_inst =
 // Test functions
 void function_c(void)
 {
+    // Wont be called
     PrintStackTrace();
+
+    // Enable div by 0 exception
+    *((volatile uint32_t *)0xE000ED14) |= (1 << 4);
+    // Do the error
+    volatile uint32_t zero = 0;
+    volatile uint32_t result = 1 / zero;
+    (void)result;
 }
 
 void function_b(void)
@@ -87,6 +95,13 @@ int main(void)
  */
 void HardFault_Handler(void)
 {
+    // Warn that we enter in HardFault Handler 
+    printf("Error Handler\n");
+
+    // Print StackTrace
+    PrintStackTrace();
+
+    // Infinite loop
     while (1) 
     {
 
